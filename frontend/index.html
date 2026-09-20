@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Учебный нейро-продажник яхтенной школы ЯхтДрим" />
+    <title>ЯхтДрим — персональный подбор программы</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a class="brand" href="/" aria-label="ЯхтДрим — главная">
+          <span class="brand-mark">YD</span>
+          <span>ЯхтДрим</span>
+        </a>
+        <div class="nav-links">
+          <a href="#assistant">Подбор программы</a>
+          <a href="#faq">Вопросы</a>
+        </div>
+      </nav>
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <span class="eyebrow">Нейро-продажник яхтенной школы</span>
+          <h1>Ваш маршрут к уверенности под парусом</h1>
+          <p>
+            Ответьте на несколько вопросов — сервис определит ваши цели и предложит
+            подходящий формат обучения или морского путешествия.
+          </p>
+          <a class="primary-link" href="#assistant">Подобрать программу</a>
+        </div>
+        <div class="hero-card" aria-label="Преимущества">
+          <div><strong>16 лет</strong><span>истории школы</span></div>
+          <div><strong>3650+</strong><span>выпускников</span></div>
+          <div><strong>IYT</strong><span>программы подготовки</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="assistant-section container" id="assistant">
+        <div class="section-heading">
+          <span class="eyebrow">Персональная консультация</span>
+          <h2>Какое морское приключение подходит вам?</h2>
+          <p>Заполните форму — рекомендации появятся сразу и сохранятся как заявка.</p>
+        </div>
+
+        <div class="assistant-grid">
+          <form class="qualification-form panel" id="qualification-form" novalidate>
+            <div class="step-title"><span>01</span><div><h3>Расскажите о себе</h3><p>Поля со звёздочкой обязательны</p></div></div>
+
+            <div class="form-row two-columns">
+              <label>Имя *<input name="name" minlength="2" maxlength="100" required placeholder="Например, Алексей" /></label>
+              <label>Телефон *<input name="phone" type="tel" required placeholder="+7 900 000-00-00" /></label>
+            </div>
+            <label>Email *<input name="email" type="email" required placeholder="name@example.com" /></label>
+
+            <fieldset>
+              <legend>Ваш опыт в яхтинге *</legend>
+              <div class="choice-grid three">
+                <label class="choice"><input type="radio" name="experience" value="none" required /><span>Нет опыта</span></label>
+                <label class="choice"><input type="radio" name="experience" value="beginner" /><span>Был на яхте</span></label>
+                <label class="choice"><input type="radio" name="experience" value="experienced" /><span>Есть практика</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Главная цель *</legend>
+              <div class="choice-grid two">
+                <label class="choice"><input type="radio" name="goal" value="captain" required /><span>Стать капитаном</span></label>
+                <label class="choice"><input type="radio" name="goal" value="cruise" /><span>Попробовать круиз</span></label>
+                <label class="choice"><input type="radio" name="goal" value="skills" /><span>Повысить уровень</span></label>
+                <label class="choice"><input type="radio" name="goal" value="family" /><span>Отдых с близкими</span></label>
+              </div>
+            </fieldset>
+
+            <div class="form-row two-columns">
+              <label>Направление *
+                <select name="destination" required>
+                  <option value="">Выберите</option><option value="turkey">Турция</option>
+                  <option value="thailand">Таиланд</option><option value="any">Помогите выбрать</option>
+                </select>
+              </label>
+              <label>Сезон *
+                <select name="season" required>
+                  <option value="">Выберите</option><option value="spring">Весна</option>
+                  <option value="summer">Лето</option><option value="autumn">Осень</option>
+                  <option value="winter">Зима</option><option value="flexible">Гибкие даты</option>
+                </select>
+              </label>
+            </div>
+
+            <label>С кем планируете поездку? *
+              <select name="group_type" required>
+                <option value="">Выберите</option><option value="solo">Один / одна</option>
+                <option value="couple">Вдвоём</option><option value="family">С семьёй</option>
+                <option value="friends">С друзьями</option>
+              </select>
+            </label>
+            <label>Комментарий<textarea name="comment" maxlength="1000" rows="3" placeholder="Что особенно важно учесть?"></textarea></label>
+
+            <label class="consent"><input type="checkbox" required /><span>Согласен на обработку данных в рамках учебной демонстрации *</span></label>
+            <div class="form-error" id="form-error" role="alert" hidden></div>
+            <button class="primary-button" type="submit"><span>Получить рекомендацию</span><span aria-hidden="true">→</span></button>
+          </form>
+
+          <aside class="result-panel panel" aria-live="polite">
+            <div class="step-title"><span>02</span><div><h3>Ваша рекомендация</h3><p>Результат квалификации клиента</p></div></div>
+            <div class="result-empty" id="result-empty">
+              <div class="compass">✦</div>
+              <h3>Маршрут ещё не построен</h3>
+              <p>Заполните форму слева, и сервис предложит подходящую программу.</p>
+            </div>
+            <article class="recommendation" id="recommendation" hidden>
+              <span class="result-label">Подходящая программа</span>
+              <h3 id="result-title"></h3>
+              <p class="result-subtitle" id="result-subtitle"></p>
+              <p id="result-reason"></p>
+              <h4>Что вы получите</h4>
+              <ul id="result-benefits"></ul>
+              <div class="next-step" id="result-next-step"></div>
+              <div class="success-note">✓ Заявка сохранена в базе данных</div>
+              <button class="secondary-button" id="restart-button" type="button">Подобрать ещё раз</button>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div class="container">
+          <div class="section-heading light"><span class="eyebrow">База знаний</span><h2>Частые вопросы</h2></div>
+          <div class="faq-list" id="faq-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div><strong>ЯхтДрим</strong><p>Учебная демонстрация нейро-продажника. Контакты в приложении демонстрационные.</p></div>
+        <div><span>Демо-телефон: +7 (900) 000-00-00</span><span>Демо-почта: demo@example.com</span></div>
+        <p>Информация подготовлена на основе материалов <a href="https://yachtdream.ru/" target="_blank" rel="noopener noreferrer">yachtdream.ru</a>.</p>
+      </div>
+    </footer>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
+

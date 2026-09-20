@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>ЯхтДрим — заявки</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="admin-body">
+    <header class="admin-header">
+      <div class="container admin-nav">
+        <a class="brand" href="/"><span class="brand-mark">YD</span><span>ЯхтДрим</span></a>
+        <span>Панель обработки заявок</span>
+      </div>
+    </header>
+    <main class="container admin-main">
+      <section class="admin-login panel" id="admin-login">
+        <span class="eyebrow">Защищённый раздел</span>
+        <h1>Вход администратора</h1>
+        <p>Введите ключ из локального файла <code>.env</code>. Ключ не передаётся в адресной строке.</p>
+        <form id="admin-login-form">
+          <label>Ключ администратора<input id="admin-key" type="password" required autocomplete="current-password" /></label>
+          <div class="form-error" id="admin-error" hidden></div>
+          <button class="primary-button" type="submit">Открыть заявки</button>
+        </form>
+      </section>
+
+      <section id="dashboard" hidden>
+        <div class="dashboard-heading">
+          <div><span class="eyebrow">CRM демонстрация</span><h1>Заявки клиентов</h1></div>
+          <div class="dashboard-actions">
+            <select id="status-filter" aria-label="Фильтр по статусу">
+              <option value="">Все статусы</option><option value="new">Новые</option>
+              <option value="contacted">Связались</option><option value="qualified">Квалифицированы</option>
+              <option value="closed">Закрыты</option>
+            </select>
+            <button class="secondary-button" id="logout-button">Выйти</button>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <article><span>Всего заявок</span><strong id="total-leads">0</strong></article>
+          <article><span>Источник</span><strong>Веб</strong></article>
+          <article><span>Хранилище</span><strong>SQLite</strong></article>
+        </div>
+        <div class="table-wrap panel">
+          <table>
+            <thead><tr><th>Клиент</th><th>Запрос</th><th>Рекомендация</th><th>Контакты</th><th>Статус</th></tr></thead>
+            <tbody id="leads-table"></tbody>
+          </table>
+          <div class="empty-table" id="empty-table" hidden>Заявок пока нет.</div>
+        </div>
+      </section>
+    </main>
+    <script src="/static/admin.js" defer></script>
+  </body>
+</html>
+

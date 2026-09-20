@@ -1,0 +1,2 @@
+"""YachtDream sales assistant backend."""
+
